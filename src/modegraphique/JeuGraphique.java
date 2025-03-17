@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
     public class JeuGraphique extends JFrame {
     private Grille grille;
     private JButton[][] bouton;
-    private Joueur j1;
-    private Joueur j2;
+    private Joueur p1;
+    private Joueur p2;
     private Joueur joueurActif;
     //ligne ou colonne active
     private int posActif; 
@@ -17,9 +17,9 @@ import java.awt.event.ActionListener;
     public JeuGraphique(int tailleGrille) {
         this.grille = new Grille(tailleGrille);
         this.bouton = new JButton[tailleGrille][tailleGrille];
-        this.j1 = new JoueurHumain("Alexandre");
-        this.j2 = new JoueurOrdinateur("ordinateur");
-        this.joueurActif = j1;
+        this.p1 = new JoueurHumain("Alexandre");
+        this.p2 = new JoueurOrdinateur("ordinateur");
+        this.joueurActif = p1;
         //ligne 0 active au debut
         this.posActif = 0; 
         this.ligneActif = true;
@@ -58,7 +58,7 @@ private JPanel infoPanel() {
     JLabel infos = new JLabel("joueur actif: " + joueurActif.getNom());
     infos.setHorizontalAlignment(SwingConstants.CENTER);
     panel.add(infos);
-    JLabel scores = new JLabel("scores: " + j1.getNom() + ": " + j1.getScore() + ", " + j2.getNom() + ": " + j2.getScore());
+    JLabel scores = new JLabel("scores: " + p1.getNom() + ": " + p1.getScore() + ", " + p2.getNom() + ": " + p2.getScore());
     scores.setHorizontalAlignment(SwingConstants.CENTER);
     panel.add(scores);
     return panel;}
@@ -83,7 +83,7 @@ private void jouerCoup(Position position){
         posActif = ligneActif ? position.getColonne() : position.getLigne();
         ligneActif = !ligneActif;
         //change le joueur actif
-        joueurActif = (joueurActif == j1) ? j2 : j1;
+        joueurActif = (joueurActif == p1) ? p2 : p1;
         activerCaseActive();
         //verifie si le jeu est termine
         finPartie();
@@ -99,8 +99,8 @@ private void finPartie(){
 }
     if (aucunCoupPosible){
         JOptionPane.showMessageDialog(this, "fin de la partie \n" +
-                j1.getNom() + ": " + j1.getScore() + " pts\n" +
-                j2.getNom() + ": " + j2.getScore() + " pts");
+                p1.getNom() + ": " + p1.getScore() + " pts\n" +
+                p2.getNom() + ": " + p2.getScore() + " pts");
             System.exit(0);
         }
 }
