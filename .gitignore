@@ -1,2 +1,6 @@
-# ajout pour ignorer les fichiers .class askip il ne faut les pousser sur git
+#ignorer les fichiers .class askip il ne faut les pousser sur git
 *.class
+# Ignorer les fichiers de logs
+*.log
+# Ignorer le répertoire bin (dossier de compilation)
+bin/
