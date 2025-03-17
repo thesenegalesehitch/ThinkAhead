@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Launch Main",
+        "request": "launch",
+        "mainClass": "modeTexte.JeuTexte",
+        "projectName": "ThinkAhead"
+      },
+      {
+        "type": "java",
+        "name": "Launch GUI",
+        "request": "launch",
+        "mainClass": "modeGraphique.JeuGraphique",
+        "projectName": "ThinkAhead"
+      }
+    ]
+  }
