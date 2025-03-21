@@ -1,11 +1,9 @@
 package modegraphique;
-
 import modeles.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 public class JeuGraphique extends JFrame {
     private Grille grille;
     private JButton[][] bouton;
@@ -32,9 +30,7 @@ public class JeuGraphique extends JFrame {
         add(infoPanel(), BorderLayout.SOUTH);
         pack();
         setLocationRelativeTo(null);
-        setVisible(true);
-    }
-
+        setVisible(true);}
     private JPanel grillePanel() {
         JPanel panel = new JPanel(new GridLayout(bouton.length, bouton.length));
         for(int i=0;i<bouton.length;i++) {
@@ -56,7 +52,6 @@ public class JeuGraphique extends JFrame {
         activerCaseActive();
         return panel;
     }
-
     private JPanel infoPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 1));
@@ -68,7 +63,6 @@ public class JeuGraphique extends JFrame {
         panel.add(scores);
         return panel;
     }
-
     private void activerCaseActive() {
         for (int i = 0; i < bouton.length; i++) {
             for (int j = 0; j < bouton[i].length; j++) {
@@ -81,7 +75,6 @@ public class JeuGraphique extends JFrame {
             } 
         } 
     }
-
     private void jouerCoup(Position position){
         Case caseJouee = grille.getCase(position);
         caseJouee.selectionner();
@@ -96,10 +89,9 @@ public class JeuGraphique extends JFrame {
         activerCaseActive();
         //verifie si le jeu est termine
         finPartie();
-
-        // Si c'est le tour de l'ordinateur, faire jouer la machine
+        //si c'est le tour de l'ordinateur, faire jouer la machine
         if (joueurActif instanceof JoueurOrdinateur) {
-            // Utiliser un Timer pour faire une petite pause avant que l'ordinateur joue
+            //utiliser un timer pour faire une petite pause avant que l'ordinateur joue 
             Timer timer = new Timer(1000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -110,10 +102,9 @@ public class JeuGraphique extends JFrame {
                 }
             });
             timer.setRepeats(false);
-            timer.start(); // Lancer le Timer pour que la machine joue après un délai
+            timer.start(); //lancer le timer pour que la machine joue apres le delai fixe
         }
     }
-
     private void finPartie(){
         boolean aucunCoupPosible = true;
         for (int i=0;i<bouton.length;i++) {
@@ -133,6 +124,6 @@ public class JeuGraphique extends JFrame {
     }
 
     public static void main(String[] args){
-        new JeuGraphique(4); //ici on cree une grille 4ligne et 4colonnes
+        new JeuGraphique(8); //ici on cree une grille 8ligne et 8colonnes
     }
 }
